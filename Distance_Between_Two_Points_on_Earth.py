@@ -18,3 +18,28 @@
 # distance with the formula discussed previously. The math module contains a
 # function named radians which converts from degrees to radians.
 
+import math
+EARTH_RADIUS_KM = 6371.01
+
+t1 = float(input("Enter the latitude of point 1 (in degree): "))
+g1 = float(input("Enter the longitude of point 1 (in degree): "))
+t2 = float(input("Enter the latitude of point 2 (in degree): "))
+g2 = float(input("Enter the langitude of point 2 (in degree): "))
+
+t1_rad = math.radians(t1) 
+g1_rad = math.radians(g1) 
+t2_rad = math.radians(t2) 
+g2_rad = math.radians(g2) 
+
+print(t1_rad)
+# print(g1)
+# print(t2)
+# print(math.acos(
+#     math.sin(t1_rad)
+# ))
+
+distance = EARTH_RADIUS_KM*math.acos(
+    math.sin(t1_rad)*math.sin(t2_rad)+math.cos(t1_rad)*math.cos(t2_rad)*math.cos(g1_rad - g2_rad)
+)
+
+print(f"The distance betbeen the two points is {distance:.2} kilometers")
